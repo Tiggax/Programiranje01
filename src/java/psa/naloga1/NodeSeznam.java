@@ -1,9 +1,23 @@
 package psa.naloga1;
 
+/*
+narest metode:
+				-insert
+				-search
+				-delete
+				-//- za node
+se jih uporab v class Seznam
++ treba dodat konstruktor
+*/
 public class NodeSeznam {
 	private static int counter;
 	private int key;
 	private NodeSeznam tail;
+
+	
+	public NodeSeznam(int key){
+		this.key=key;
+	}
 
 	public int getKey(){
 		return key;
@@ -11,72 +25,46 @@ public class NodeSeznam {
 	public NodeSeznam getTail(){
 		return tail;
 	}
-
-	public NodeSeznam(int key){
-		this.key=key;
-	}
-
-	public int compare(NodeSeznam node) {
-		counter++;
-		return node.key - this.key;
-	}
-
-	public boolean insert(int knode){
-		if(tail==null){
-			tail = new NodeSeznam(knode);
+//------------------[Werk]-------------------------
+	public boolean insert(NodeSeznam node){ 
+		if (tail == null) {
+			tail = new NodeSeznam(node.key);
 			return true;
-		}
-		else{
-			return tail.insert(knode);
+		} else {
+			return insert(getTail().tail);
 		}
 	}
-	public boolean insert(NodeSeznam node){
-		if(tail==null){
-			tail = node;
+	
+	public boolean search(NodeSeznam node){
+		if (key == node.key) {
 			return true;
-		}
-		else{
-			return tail.insert(node);
+		} else {
+			if (tail == null) {
+				return false;
+			} else {
+				return tail.search(node)
+			}
 		}
 	}
 
-	public boolean delete(int knode){
-		if(knode == key){}
-		if(tail == null){
+	public boolean delete(NodeSeznam node){
+		if (tail == null) {
 			return false;
 		}
 		else{
-			if(tail.key == knode){
+			if (tail.key == node.key) {
 				tail = tail.tail;
 				return true;
 			}
 			else{
-				return tail.delete(knode);
+				return tail.delete(node);
 			}
 		}
 	}
-	public boolean delete(NodeSeznam node){
-		delete(node.key);
-		if(node.tail == null){
-			return false;
-		}
-		else{
-			return delete(node.tail.key);
-		}
-	}
-
-	public boolean search(int knode){
-		if(key == knode){
-			return true;
-		}
-		else{
-			if(tail == null){
-				return false;
-			}
-			else{
-				return tail.search(knode);
-			}
-		}
+//-----------------[no touchy]----------------------
+	public int compare(NodeSeznam node) {
+		counter++;
+		return node.key - this.key;
 	}
 
 	public int getCounter() {
