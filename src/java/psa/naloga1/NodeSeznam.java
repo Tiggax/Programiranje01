@@ -36,33 +36,25 @@ public class NodeSeznam {
 	}
 	
 	public boolean delete(NodeSeznam node){
-		if (tail.compare(==0)) {
-			
-		} else {
-			
-		}
-
-
-
 		if (tail.compare(node)==0) {
-			tail = tail.tail;
-			return true;
-		}
-		else{
+				tail = tail.tail;
+				return true;
+		} else {
 			return tail.delete(node);
 		}
 	}
 	
 	public boolean search(NodeSeznam node){
-		if (tail.compare(node)==0) {
-			return true;
-		} else {
-			if (tail == null) {
-				return false;
+		if (tail == null) {
+			return false;
+		}
+		else{
+			if (tail.compare(node) == 0) {
+				return true;
 			} else {
 				return tail.search(node);
 			}
-		}
+		}	
 	}
 //-----------------[no touchy]----------------------
 	public int compare(NodeSeznam node) {
