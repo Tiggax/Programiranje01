@@ -31,12 +31,12 @@ public class NodeSeznam {
 			tail = new NodeSeznam(node.key);
 			return true;
 		} else {
-			return insert(getTail().tail);
+			return tail.insert(node);
 		}
 	}
 	
 	public boolean search(NodeSeznam node){
-		if (key == node.key) {
+		if (tail.compare(node)==0) {
 			return true;
 		} else {
 			if (tail == null) {
@@ -52,7 +52,7 @@ public class NodeSeznam {
 			return false;
 		}
 		else{
-			if (tail.key == node.key) {
+			if (tail.compare(node)==0) {
 				tail = tail.tail;
 				return true;
 			}
