@@ -42,7 +42,7 @@ public class NodeSeznam {
 			if (tail == null) {
 				return false;
 			} else {
-				return tail.search(node)
+				return tail.search(node);
 			}
 		}
 	}

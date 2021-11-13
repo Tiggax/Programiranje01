@@ -28,7 +28,8 @@ public class Seznam {
 		}
 		else{
 			if(head.getKey() == element){
-				return head.insert(head.getTail());
+				head = head.getTail();
+				return true;
 			}
 			else{
 				return head.delete(element);
