@@ -1,5 +1,6 @@
 package psa.naloga1;
 
+
 public class Seznam {
 	private NodeSeznam head;
 
@@ -9,12 +10,13 @@ public class Seznam {
 	 * Metoda vrne true, ce je bil element uspesno vstavljen in false sicer.
 	 */
 	public boolean insert(int element) {
+		NodeSeznam node = new NodeSeznam(element);
 		if(head == null){
-			head = new NodeSeznam(element);
+			head = node;
 			return true;
 		}
 		else{
-			return head.insert(element);
+			return head.insert(node);
 		}
 	}
 
@@ -27,12 +29,13 @@ public class Seznam {
 			return false;
 		}
 		else{
-			if(head.getKey() == element){
+			NodeSeznam node = new NodeSeznam(element);
+			if(head.compare(node)==0){
 				head = head.getTail();
 				return true;
 			}
 			else{
-				return head.delete(element);
+				return head.delete(node);
 			}
 		}
 	}
@@ -46,7 +49,12 @@ public class Seznam {
 			return false;
 		}
 		else{
-			return head.search(element);
+			NodeSeznam node = new NodeSeznam(element);
+			if (head.compare(node)==0) {
+				return true;
+			} else {
+				return head.search(node);
+			}
 		}
 	}
 
