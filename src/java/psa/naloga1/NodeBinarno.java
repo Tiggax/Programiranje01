@@ -42,10 +42,22 @@ public class NodeBinarno {
 	}
 
 	public boolean search(NodeBinarno node){
-		//TODO
-		return true;
-
-		
+		int compared = compare(node);
+		if (compared > 0) {
+			if (this.desni == null) {
+				return false;
+			}else{
+				return this.desni.search(node);
+			}
+		} else if (compared < 0) {
+			if (this.levi == null) {
+				return false;
+			} else {
+				return this.levi.search(node);
+			}
+		}else{
+			return true;
+		}
 	}
 
 	public boolean delete(NodeBinarno node){
