@@ -8,10 +8,13 @@ public class Binarno {
 	 * Metoda vrne true, ce je bil element uspesno vstavljen in false sicer.
 	 */
 	public boolean insert(int element) {
-		if (root == null){
-			root = new NodeBinarno(element);
+		NodeBinarno node = new NodeBinarno(element);
+		if (root == null) {
+			root = node;
+			return true;
+		} else {
+			return root.insert(node);
 		}
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
 	}
 
 	/*
@@ -19,7 +22,12 @@ public class Binarno {
 	 * Metoda vrne true, ce je bil element uspesno izbrisan iz drevesa, in false sicer
 	 */
 	public boolean delete(int element) {
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
+		NodeBinarno node = new NodeBinarno(element);
+        if (root == null){
+            return false;
+        } else {
+            return root.delete(node);
+        }
 	}
 
 	/*
@@ -27,7 +35,12 @@ public class Binarno {
 	 * Metoda vrne true, ce je bil element uspesno najden v drevesu, in false sicer
 	 */
 	public boolean search(int element) {
-		throw new UnsupportedOperationException("To funkcijo morate implementirati");
+		NodeBinarno node = new NodeBinarno(element);
+		if (root == null) {
+			return false;
+		} else {
+			return root.search(node);
+		}
 	}
 
 	public int getCounter() {
