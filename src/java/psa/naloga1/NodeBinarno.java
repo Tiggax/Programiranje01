@@ -61,8 +61,70 @@ public class NodeBinarno {
 	}
 
 	public boolean delete(NodeBinarno node){
-		//TODO
-		return true;
+		int compared = compare(node);
+		if (compared > 0) {
+			if (this.desni == null) {
+				return false;
+			}else{
+				return this.desni.delete(node);
+			}
+		} else if (compared < 0) {
+			if (this.levi == null) {
+				return false;
+			} else {
+				return this.levi.delete(node);
+			}
+		}else{
+			if (this.levi == null && this.desni == null) {
+				//TODO
+			}
+			if (this.levi == null) {
+				this.key = getMin().getKey();
+				delMin();
+			} else if (this.desni == null) {
+				this.key = getMax().getKey();
+				delMax();
+			}
+
+
+
+			if (this.levi == null && this.desni == null) {
+				this.key = ;
+				return true;
+			} else {
+				
+			}
+		}
+	}
+	public NodeBinarno getMin(){
+		if (this.levi.levi == null) {
+			return this.levi;
+		} else {
+			return levi.getMin();
+		}
+	}
+	public boolean delMin(){
+		if (this.levi.levi == null) {
+			this.levi = null;
+			return true;
+		} else {
+			return levi.delMin();
+		}
+	}
+	public NodeBinarno getMax(){
+		if (this.desni.desni == null) {
+			return this.desni;
+		} else {
+			return desni.getMax();
+		}
+	}
+	public boolean delMax(){
+		if (this.desni.desni == null) {
+			this.desni = null;
+			return true;
+		} else {
+			return desni.delMax();
+		}
 	}
 
 	public int compare(NodeBinarno node) {
