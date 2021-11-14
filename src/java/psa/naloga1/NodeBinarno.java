@@ -21,8 +21,24 @@ public class NodeBinarno {
 	}
 
 	public boolean insert(NodeBinarno node){
-		//TODO
-		return true;
+		int compared = compare(node);
+		if (compared > 0) {
+			if (this.desni == null) {
+				this.desni = node;
+				return true;
+			}else{
+				return this.desni.insert(node);
+			}
+		} else if (compared < 0) {
+			if (this.levi == null) {
+				this.levi = node;
+				return true;
+			} else {
+				return this.levi.insert(node);
+			}
+		}else{
+			return false;
+		}
 	}
 
 	public boolean search(NodeBinarno node){
