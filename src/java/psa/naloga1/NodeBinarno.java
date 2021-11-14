@@ -44,6 +44,8 @@ public class NodeBinarno {
 	public boolean search(NodeBinarno node){
 		//TODO
 		return true;
+
+		
 	}
 
 	public boolean delete(NodeBinarno node){
